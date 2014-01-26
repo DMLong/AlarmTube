@@ -21,7 +21,7 @@ public class AlarmSet extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_set);
         
-        //timeSelector = () findViewById(R.id.progress);
+        timeSelector = (TimePicker) findViewById(R.id.timePicker);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class AlarmSet extends Activity {
             //Intent intentAlarm = new Intent(this, AlarmReciever.class);
             //get the object
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            //alarmManager.set(0, triggerAtTime, operation)
+            alarmManager.set(AlarmManager.RTC_WAKEUP, timeSelecstor., operation)
         } else {
             Log.e("test","OFF");
         }

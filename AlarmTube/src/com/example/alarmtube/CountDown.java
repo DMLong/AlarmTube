@@ -1,9 +1,12 @@
 package com.example.alarmtube;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +15,7 @@ import android.widget.Button;
 public class CountDown extends Activity {
 
 	Button start;
+	MyCount mc;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,7 +28,9 @@ public class CountDown extends Activity {
 			}
 		});
 		
-		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.sound_file_1);
+		mc = new MyCount(10000, 100);
+		mc.start();
+		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
 	}
 
@@ -45,16 +51,19 @@ public class CountDown extends Activity {
         @Override
         public void onFinish() {
         	startYoutube();
+        	Log.i("count","finsih");
         }
 
 		@Override
         public void onTick(long millisUntilFinished) {
-        	start.setText("Left: " + millisUntilFinished / 1000);
+			Log.i("count","step");
+        	start.setText("Video in: " + millisUntilFinished / 1000);
         }
     }
     
     private void startYoutube() {
-		// TODO Auto-generated method stub
+    	 startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.youtube.com/watch?v=Hxy8BZGQ5Jo")));
+    	    Log.i("Video", "Video Playing....");
 		
 	}
 

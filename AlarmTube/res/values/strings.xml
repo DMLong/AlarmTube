@@ -7,5 +7,7 @@
     <string name="title_activity_alarm_set">AlarmSet</string>
     <string name="title_activity_count_down">CountDown</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_da_tube">DaTube</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>

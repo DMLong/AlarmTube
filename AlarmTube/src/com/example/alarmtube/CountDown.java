@@ -1,9 +1,11 @@
 package com.example.alarmtube;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -32,6 +34,11 @@ public class CountDown extends Activity {
 		mc.start();
 		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); // no need to call prepare(); create() does that for you
+	
+		SharedPreferences pref = getSharedPreferences("COUNT",Context.MODE_PRIVATE);
+		Editor editor = pref.edit();
+	    editor.putInt("COUNT", pref.getInt("COUNT", 0)+1);
+	    editor.commit();
 	}
 
 	@Override
@@ -61,8 +68,10 @@ public class CountDown extends Activity {
     }
     
     private void startYoutube() {
-    	 startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.youtube.com/watch?v=Hxy8BZGQ5Jo")));
-    	    Log.i("Video", "Video Playing....");
+    	Intent intent = new Intent(this, DaTube.class);
+    	startActivity(intent);
+    	 //startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.youtube.com/watch?v=Hxy8BZGQ5Jo")));
+    	  //  Log.i("Video", "Video Playing....");
 		
 	}
 

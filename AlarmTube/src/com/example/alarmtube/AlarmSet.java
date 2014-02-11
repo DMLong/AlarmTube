@@ -38,8 +38,8 @@ public class AlarmSet extends Activity {
             Log.e("test","ON");
             //Intent intentAlarm = new Intent(this, AlarmReciever.class);
             //get the object
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, timeSelecstor., operation)
+            //AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP, timeSelecstor., operation)
         } else {
             Log.e("test","OFF");
         }

@@ -11,14 +11,24 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
+    <ToggleButton
+        android:id="@+id/toggleAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/timePicker"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:onClick="toggleOnOff"
+        android:text="ToggleButton" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/timePicker1"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="94dp"
+        android:layout_below="@+id/toggleAlarm"
+        android:layout_marginTop="14dp"
         android:text="Quiz Record:"
         tools:context=".AlarmSet" />
 
@@ -28,19 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="64dp"
+        android:layout_marginLeft="28dp"
+        android:layout_toRightOf="@+id/textView1"
         android:text="TextView" />
-
-    <ToggleButton
-        android:id="@+id/toggleAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignRight="@+id/timePicker1"
-        android:layout_marginBottom="19dp"
-        android:text="ToggleButton"
-        android:onClick="toggleOnOff" />
 
 </RelativeLayout>

@@ -56,7 +56,6 @@ public class CountDown extends Activity {
 
 		@Override
         public void onTick(long millisUntilFinished) {
-			Log.i("count","step");
         	start.setText("Video in: " + millisUntilFinished / 1000);
         }
     }

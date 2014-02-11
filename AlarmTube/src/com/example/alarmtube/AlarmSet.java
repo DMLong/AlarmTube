@@ -1,20 +1,24 @@
 package com.example.alarmtube;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 public class AlarmSet extends Activity {
 	
 	TimePicker timeSelector;
+	AlarmManager alarmManager;
+    PendingIntent alarmIntent; 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,15 +35,29 @@ public class AlarmSet extends Activity {
     }
     
     public void toggleOnOff(View view){
+    	Calendar calendar;
+    	
+    	TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker);
+    	
     	// Is the toggle on?
-        boolean on = ((ToggleButton) view).isChecked();
+    	boolean on = ((ToggleButton) view).isChecked();
+        
+        
         
         if (on) {
             Log.e("test","ON");
-            //Intent intentAlarm = new Intent(this, AlarmReciever.class);
+            
+            Intent i = new Intent(this, DLAlarmReciever.class);
+            //alarmIntent = PendingIntent.getBroadcast(this, requestCode, intent, flags)()
+            
+            calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, timeSelector.getCurrentHour());
+            calendar.set(Calendar.MINUTE, timeSelector.getCurrentMinute());
+            
             //get the object
-            //AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            //alarmManager.set(AlarmManager.RTC_WAKEUP, timeSelecstor., operation)
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            //alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intentAlarm);
         } else {
             Log.e("test","OFF");
         }

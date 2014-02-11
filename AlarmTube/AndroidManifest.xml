@@ -18,6 +18,7 @@
             android:name="com.example.alarmtube.AlarmSet"
             android:label="@string/title_activity_alarm_set" >
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -29,7 +30,7 @@
             android:name="com.example.alarmtube.CountDown"
             android:label="@string/title_activity_count_down" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -1,6 +1,7 @@
 package com.example.alarmtube;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -36,8 +37,8 @@ public class AlarmSet extends Activity {
     
     public void toggleOnOff(View view){
     	Calendar calendar;
-    	
-    	TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker);
+    	long curTime;
+    	long alarmTime;
     	
     	// Is the toggle on?
     	boolean on = ((ToggleButton) view).isChecked();
@@ -48,18 +49,29 @@ public class AlarmSet extends Activity {
             Log.e("test","ON");
             
             Intent i = new Intent(this, DLAlarmReciever.class);
-            //alarmIntent = PendingIntent.getBroadcast(this, requestCode, intent, flags)()
+            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_ONE_SHOT);
             
             calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.set(Calendar.HOUR_OF_DAY, timeSelector.getCurrentHour());
-            calendar.set(Calendar.MINUTE, timeSelector.getCurrentMinute());
+            //calendar.setTimeInMillis(System.currentTimeMillis());
+            //calendar.set(Calendar.HOUR_OF_DAY, timeSelector.getCurrentHour());
+            //calendar.set(Calendar.MINUTE, timeSelector.getCurrentMinute());
+            //Log.e("calendar",""+calendar.);
+            //Log.e("calendar",""+Calendar.MINUTE);
             
+            Log.e("hr",""+timeSelector.getCurrentHour());
+            Log.e("min",""+timeSelector.getCurrentMinute());
+            
+            //curTime=System.currentTimeMillis();
+            curTime= new GregorianCalendar().getTimeInMillis();
+            alarmTime = (60*1000*timeSelector.getCurrentMinute())+(3600*1000*timeSelector.getCurrentHour());
+            
+            Log.e("curTime",""+curTime);
+            Log.e("alarmTime",""+alarmTime);
             //get the object
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            //alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intentAlarm);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+20000, alarmIntent);
         } else {
-            Log.e("test","OFF");
+            Log.e("test","OFFF");
         }
 
     }

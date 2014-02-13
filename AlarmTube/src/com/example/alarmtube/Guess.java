@@ -22,10 +22,11 @@ public class Guess extends Activity {
 		butts.add((Button)findViewById(R.id.button3));
 		
 		Button good = getButt(butts);
+		good.setText(BigDaddy.friendData.name);
 		Button bad1 = getButt(butts);
+		bad1.setText(BigDaddy.wrong1);
 		Button bad2 = getButt(butts);
-		
-		
+		bad2.setText(BigDaddy.wrong2);
 	}
 
 	private Button getButt(ArrayList<Button> butts) {

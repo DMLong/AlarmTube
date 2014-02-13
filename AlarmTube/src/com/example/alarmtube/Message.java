@@ -22,7 +22,7 @@ public class Message extends Activity {
 		SharedPreferences pref = getSharedPreferences("COUNT",Context.MODE_PRIVATE);
 		int right = pref.getInt("COUNT", 0);
 	    int wrong = pref.getInt("COUNT", 0);
-		
+	    percent.setText("percent right: "+ right/(right +wrong));
 	}
 
 	@Override

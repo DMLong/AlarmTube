@@ -1,13 +1,15 @@
 package com.example.alarmtube;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
+import com.google.android.youtube.player.YouTubePlayer.PlaybackEventListener;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
@@ -15,10 +17,10 @@ public class DaTube extends YouTubeBaseActivity implements
 OnInitializedListener{
 	YouTubePlayerView vid;
 	String apiKey = "AIzaSyD0_ZBRWAH8XhUXRHBqCHbGbrlvuE72aPM";
-	String VIDEO_ID[]={"WkaoqpfMG6Q"};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);		
 		vid =new YouTubePlayerView(this);
 		setContentView(vid);
 		vid.initialize(apiKey, this);
@@ -39,11 +41,48 @@ OnInitializedListener{
 	}
 
 	@Override
-	public void onInitializationSuccess(Provider prov, YouTubePlayer player,
+	public void onInitializationSuccess(Provider prov, final YouTubePlayer player,
 			boolean wasRestored) {
 		if (!wasRestored) {
-	        player.loadVideo(VIDEO_ID[getSharedPreferences("COUNT",Context.MODE_PRIVATE).getInt("COUNT", 0)]);
+	        player.loadVideo(BigDaddy.friendData.vid);
+	        
+	        player.setPlaybackEventListener(new PlaybackEventListener(){
+
+				@Override
+				public void onBuffering(boolean arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onPaused() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onPlaying() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onSeekTo(int arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onStopped() {
+					goToGuess();
+				}
+	        });
 	      }
+	}
+
+	protected void goToGuess() {
+    	Intent intent = new Intent(this, Guess.class);
+    	startActivity(intent);
 	}
 
 }

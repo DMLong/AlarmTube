@@ -18,6 +18,7 @@ public class CountDown extends Activity {
 
 	Button start;
 	MyCount mc;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,12 +34,21 @@ public class CountDown extends Activity {
 		mc = new MyCount(10000, 100);
 		mc.start();
 		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		mediaPlayer.start(); // no need to call prepare(); create() does that for you
-	
+		mediaPlayer.start(); 
+		
 		SharedPreferences pref = getSharedPreferences("COUNT",Context.MODE_PRIVATE);
 		Editor editor = pref.edit();
-	    editor.putInt("COUNT", pref.getInt("COUNT", 0)+1);
+		int at =  pref.getInt("COUNT", 0);
+	    editor.putInt("COUNT",at+1);
 	    editor.commit();
+	    
+	    FriendDataManager fdm = new FriendDataManager();
+	    BigDaddy.friendData = fdm.getFriend(at);
+	    BigDaddy.wrong1 = fdm.getWrong(at);
+	    BigDaddy.wrong2= fdm.getWrong(at);
+	    while (BigDaddy.wrong1.equals(BigDaddy.wrong2)){
+	    	 BigDaddy.wrong2= fdm.getWrong(at);
+	    }
 	}
 
 	@Override
@@ -70,9 +80,6 @@ public class CountDown extends Activity {
     private void startYoutube() {
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);
-    	 //startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.youtube.com/watch?v=Hxy8BZGQ5Jo")));
-    	  //  Log.i("Video", "Video Playing....");
-		
 	}
 
 }

@@ -15,11 +15,20 @@ public class FriendDataManager {
 	}
 
 	public String getWrong(int at) {
+		int roll;
+		/*
+		 if (at >=fd.length){
+			roll = (int) Math.floor(Math.random()*(fd.length));
+			while (fd[roll].name.equals(BigDaddy.friendData.name)){
+				roll = (int) Math.floor(Math.random()*(fd.length));
+			}
+			return fd[roll].name;
+		}*/
 		if (at >=fd.length){
-			at =fd.length-1;
+			at = fd.length-1;
 		}
 		Log.i("at",""+at);
-		int roll= (int) Math.floor(Math.random()*(fd.length + 2 - (at+1))) +at+1;
+		roll= (int) Math.floor(Math.random()*(fd.length + 2 - (at+1))) +at+1;
 		Log.i("roll",""+roll);
 		if (roll == fd.length +1){
 			return "Biggie";

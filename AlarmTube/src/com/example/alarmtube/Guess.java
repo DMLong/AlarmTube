@@ -3,7 +3,10 @@ package com.example.alarmtube;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -37,10 +40,18 @@ public class Guess extends Activity {
 		result.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View view) {
+				SharedPreferences pref;
+				Editor editor;
 				if (((Button)view).getText().equals(BigDaddy.friendData.name)){
-					//TODO RIGHT
+					pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
+					editor = pref.edit();
+				    editor.putInt("RIGHT",pref.getInt("RIGHT", 0)+1);
+				    editor.commit();
 				}else{
-					//TODO WRONG
+					pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
+					editor = pref.edit();
+				    editor.putInt("WRONG",pref.getInt("WRONG", 0)+1);
+				    editor.commit();
 				}
 				nextAct();
 			}
@@ -56,8 +67,9 @@ public class Guess extends Activity {
 	}
 	
 	private void nextAct() {
-    	Intent intent = new Intent(this, DaTube.class);
+    	Intent intent = new Intent(this, Message.class);
     	startActivity(intent);
+    	finish();
 	}
 
 }

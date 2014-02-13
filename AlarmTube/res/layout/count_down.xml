@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:text="Start Video"
         android:gravity="center"
+        android:textSize="50dp"
         />
 
 </LinearLayout>

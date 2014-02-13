@@ -83,6 +83,7 @@ OnInitializedListener{
 	protected void goToGuess() {
     	Intent intent = new Intent(this, Guess.class);
     	startActivity(intent);
+    	finish();
 	}
 
 }

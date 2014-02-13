@@ -22,6 +22,7 @@ public class CountDown extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.e("TAGG","made it here");
 		setContentView(R.layout.count_down);
 		start = (Button) findViewById(R.id.start);
 		start.setOnClickListener(new OnClickListener(){

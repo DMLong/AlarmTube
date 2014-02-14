@@ -20,6 +20,7 @@ public class AlarmSet extends Activity {
 	TimePicker timeSelector;
 	AlarmManager alarmManager;
     PendingIntent alarmIntent; 
+    Intent i;
     long offset;
 
     
@@ -65,7 +66,7 @@ public class AlarmSet extends Activity {
             
             curTime=System.currentTimeMillis();
             //curTime= new GregorianCalendar().getTimeInMillis();
-            curTime = (curTime-(3600*6*1000))%(3600*24*1000) //TODO change that - to a + and 6 to an 8 for china timezones
+            curTime = (curTime-(3600*6*1000))%(3600*24*1000); //TODO change that - to a + and 6 to an 8 for china timezones
             alarmTime = (60*1000*timeSelector.getCurrentMinute())+(3600*1000*timeSelector.getCurrentHour());
             
             Log.e("curTime","curTime "+curTime);
@@ -81,12 +82,20 @@ public class AlarmSet extends Activity {
             Log.e("offset","offset "+offset);
             //get the object
             Log.e("AAA","SANITY CHECK");
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+offset, alarmIntent);
         } else {
             Log.e("test","OFFF");
+            
+            Intent i = new Intent(this, DLAlarmReciever.class);
+            //i.putExtra("startCountdown", false);
+            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_ONE_SHOT);
+            alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(alarmIntent);
+            
+            
             timeSelector.setEnabled(true);
-            //TODO cancel old pending request.
+            //TODO cancel old pending request.t
         }
     }
 }

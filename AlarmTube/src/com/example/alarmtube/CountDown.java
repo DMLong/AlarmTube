@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -34,8 +34,13 @@ public class CountDown extends Activity {
 		
 		mc = new MyCount(10000, 100);
 		mc.start();
-		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		mediaPlayer.start(); 
+		
+		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		 // Vibrate for 1500 milliseconds
+		 v.vibrate(1500);
+		
+		//MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
+		//mediaPlayer.start(); 
 		
 		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
 		Editor editor = pref.edit();

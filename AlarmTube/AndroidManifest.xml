@@ -10,6 +10,7 @@
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:debuggable="true"
@@ -21,6 +22,7 @@
             android:label="@string/title_activity_alarm_set" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,7 +30,6 @@
             android:name="com.example.alarmtube.CountDown"
             android:label="@string/title_activity_count_down" >
             <intent-filter>
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,6 +47,10 @@
         <activity
             android:name="com.example.alarmtube.Message"
             android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="com.example.alarmtube.WAKEUP"
+            android:label="@string/title_activity_wakeup" >
         </activity>
     </application>
 

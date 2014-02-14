@@ -37,7 +37,7 @@ public class CountDown extends Activity {
 		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); 
 		
-		SharedPreferences pref = getSharedPreferences("COUNT",Context.MODE_PRIVATE);
+		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
 		Editor editor = pref.edit();
 		int at =  pref.getInt("COUNT", 0);
 	    editor.putInt("COUNT",at+1);
@@ -74,13 +74,54 @@ public class CountDown extends Activity {
 
 		@Override
         public void onTick(long millisUntilFinished) {
-        	start.setText("Video in: " + millisUntilFinished / 1000);
+			start.setText("零");
+			start.setText("一");
+			start.setText("二");
+			start.setText("三");
+			start.setText("四");
+			start.setText("五");
+			start.setText("六");
+			start.setText("七");
+			start.setText("八");
+			start.setText("九");
+			start.setText("十");
+			
+			start.setText("Video in: " + toChi((int)(millisUntilFinished / 1000)));
         }
+
+		private String toChi(int num) {
+			switch (num){
+			case 0:
+				return "零";
+			case 1:
+				return "一";
+			case 2:
+				return "二";
+			case 3:
+				return "三";	
+			case 4:
+				return "四";
+			case 5:
+				return "五";
+			case 6:
+				return "六";
+			case 7:
+				return "七";
+			case 8:
+				return "八";
+			case 9:
+				return "九";
+			case 10:
+				return "十";
+			}
+			return "??";
+		}
     }
     
     private void startYoutube() {
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);
+    	finish();
 	}
 
 }

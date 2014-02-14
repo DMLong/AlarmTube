@@ -35,9 +35,9 @@ public class CountDown extends Activity {
 		mc = new MyCount(10000, 100);
 		mc.start();
 		
-		Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+		Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 		 // Vibrate for 1500 milliseconds
-		 v.vibrate(1500);
+		 v.vibrate(500);
 		
 		//MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		//mediaPlayer.start(); 

@@ -65,7 +65,7 @@ public class AlarmSet extends Activity {
             
             curTime=System.currentTimeMillis();
             //curTime= new GregorianCalendar().getTimeInMillis();
-            curTime = (curTime-(3600*6*1000))%(3600*24*1000);
+            curTime = (curTime-(3600*6*1000))%(3600*24*1000) //TODO change that - to a + and 6 to an 8 for china timezones
             alarmTime = (60*1000*timeSelector.getCurrentMinute())+(3600*1000*timeSelector.getCurrentHour());
             
             Log.e("curTime","curTime "+curTime);
@@ -82,7 +82,7 @@ public class AlarmSet extends Activity {
             //get the object
             Log.e("AAA","SANITY CHECK");
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            alarmManager.set(AlarmManager.RTC_WAKEUP, 200000, alarmIntent);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+offset, alarmIntent);
         } else {
             Log.e("test","OFFF");
             timeSelector.setEnabled(true);

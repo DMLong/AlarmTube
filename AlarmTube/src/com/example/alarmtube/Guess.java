@@ -24,7 +24,7 @@ public class Guess extends Activity {
 		setContentView(R.layout.activity_guess);
 		
 		ArrayList<Button> butts = new ArrayList<Button>();
-		butts.add((Button)findViewById(R.id.button1));
+		butts.add((Button)findViewById(R.id.translate));
 		butts.add((Button)findViewById(R.id.button2));
 		butts.add((Button)findViewById(R.id.button3));
 		

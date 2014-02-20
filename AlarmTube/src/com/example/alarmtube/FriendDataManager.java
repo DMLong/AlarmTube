@@ -18,7 +18,26 @@ public class FriendDataManager {
 			new FriendData("W45DRy7M1no","Kevin Draper","Rhys: I'll bet you feel awkward in China sometimes because you're a tall, lanky, pasty white guy carrying your belongings around in a plastic grocery bag with a broken handle.But at least you're not this guy, right?-Draper"),
 			new FriendData("4GnJ5Y5cB6I","Katie Powell","May everyday you spend in China be filled with the joy of swings."),
 			new FriendData("1RVRCd6J2NA","Dhanna","How can you not wake up to black sluts? Horrible, but I had to..."),
-			new FriendData("WkaoqpfMG6Q","Colin Wielga","webz!")
+			new FriendData("WkaoqpfMG6Q","Colin Wielga","webz!"),
+			new FriendData("Vo0Cazxj_yc","Chris Wilen","What up, Rhys!  It was either this video or 'Where the hell is Matt?'  I thought you may have already seen that one, but if not, look that up too.  Anyway, today, look around you and watch how incredible people in the world are!  I hope something really special and exciting happens!  Rise and shine, champ!  --Chris Wilen"),
+			new FriendData("0P9QMkm9Eew","David Long","rise and shine! xoxo -dlong"),
+			new FriendData("sD35BHWH8sg#","Andy Cochrane","'SNIPE! -Cochrane"),
+			new FriendData("CM5mFH3_Qhs","Iris Cutler","We can't all be curling champions…-Iris"),
+			new FriendData("9d8wWcJLnFI","Groenemann","I don't have a message because I'm a n00b who can't follow directions-Groenemann"),
+			new FriendData("HEr1ihXM61E","Nora Sullivan","Wake up Rhys, you're in China!-Nora"),
+			new FriendData("NFTaiWInZ44","Will Stratford","Rhys, I miss living with you on that side of the planet, but I hope you're keeping up the superior diet of paklep, Nutella and Toblerones.-Will"),
+			new FriendData("2AKtp3XHn38", "Zach Grossnickle","To get you mind going both visually and intellectually. Keep rockin' in Chinatown. Riddle: Under Pressure is the only way I work, and by myself is the only way I'm hurt. What am I?-GNick"),
+			new FriendData("c9wHWelQgYQ","Tote Hughes","I don't have a message because I'm a n00b who can't follow directions-Tote"),
+			new FriendData("HJxyqFisFdY", "Ben Klibanner","I don't have a message because I'm a n00b who can't follow directions-Ben"),
+			new FriendData("aQ6IVN5Yvzo", "pbob","GET UP AND PEEP SOME BIRDS!!! -Pbob"),
+			new FriendData("LkCNJRfSZBU","Petey Rogers","The Rza!  Wake up you lazy bum!  Hope that Chinese is keeping you fresh, Xia Qian!-Petey"),
+			new FriendData("662JyNLVpxE","Jack Mullaney","no means 'yes', yes means 'in the butt'-Jack"),
+			new FriendData("Rch-092SUpQ", "Eric Alexander","Hey buddy! This seemed like a relaxing way to wake-up. Plus, Rainbow Road. Go teach 'em! -EA"),
+			new FriendData("qipaFDNxF4s","Frogger","Rhys, turn around, every now and then I get a little bit terrified  and then I see the look in your eyes, turn around, bright eyes, every now and then i fall apart, and I need you now tonight, and I need more than ever.-Frogger"),
+			new FriendData("cVy7YeeqGZQ","Sam Smith","You shall not pass!"),
+			new FriendData("_7drlrSFeMs","Djallal","hey rhys hope you're doing well, miss you greatly and want you to know that I think of you and pray for you all the time."),
+			new FriendData("j-CVp6_gCbQ","Wiensy","I don't have a message because I'm a n00b who can't follow directions-Wiensy"),
+			new FriendData("V2sKH8yjVsM","Eric Manley","Get your blu-blockers on Rhys! It's a brand new day!-Manley")
 	};
 
 	public FriendData getFriend(int at) {

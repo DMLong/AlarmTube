@@ -106,8 +106,9 @@ public class AlarmSet extends Activity {
             Log.e("test","OFFF");
             
             Intent i = new Intent(this, DLAlarmReciever.class);
+            
             //i.putExtra("startCountdown", false);
-            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_ONE_SHOT);
+            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.cancel(alarmIntent);
             

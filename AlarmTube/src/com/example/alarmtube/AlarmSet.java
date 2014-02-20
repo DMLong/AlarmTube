@@ -24,6 +24,8 @@ public class AlarmSet extends Activity {
     PendingIntent alarmIntent; 
     Intent i;
     long offset;
+    private static Bundle bundle = new Bundle();
+    ToggleButton toggleButton;
     TextView percent;
 
     
@@ -33,6 +35,7 @@ public class AlarmSet extends Activity {
         setContentView(R.layout.activity_alarm_set);
         
         timeSelector = (TimePicker) findViewById(R.id.timePicker);
+        toggleButton = (ToggleButton)findViewById(R.id.toggleAlarm);
         
 		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
 		int right = pref.getInt("RIGHT", 0);
@@ -40,12 +43,7 @@ public class AlarmSet extends Activity {
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
 	    percent = (TextView)findViewById(R.id.textView1);
-	    if (wrong != 0){
-	    	percent.setText(right+"/"+(wrong+right));
-	    }else{
-	    	percent.setText("?");
-	    }
-	    
+	    //percent.setText(right+"/"+(wrong+right));  
     }
     
     @Override
@@ -54,9 +52,19 @@ public class AlarmSet extends Activity {
         return true;
     }
     
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	bundle.putBoolean("ToggleButtonState", toggleButton.isChecked());  	
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        toggleButton.setChecked(bundle.getBoolean("ToggleButtonState",false));
+    }
+    
     public void toggleOnOff(View view){
-    	Log.i("toggleOff","called");
-    	Calendar calendar;
     	long curTime;
     	long alarmTime;
     	
@@ -70,13 +78,6 @@ public class AlarmSet extends Activity {
             timeSelector.setEnabled(false);
             Intent i = new Intent(this, DLAlarmReciever.class);
             alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
-            
-            calendar = Calendar.getInstance();
-            //calendar.setTimeInMillis(System.currentTimeMillis());
-            //calendar.set(Calendar.HOUR_OF_DAY, timeSelector.getCurrentHour());
-            //calendar.set(Calendar.MINUTE, timeSelector.getCurrentMinute());
-            //Log.e("calendar",""+calendar.);
-            //Log.e("calendar",""+Calendar.MINUTE);
             
             Log.e("hr",""+timeSelector.getCurrentHour());
             Log.e("min",""+timeSelector.getCurrentMinute());

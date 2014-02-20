@@ -17,14 +17,14 @@ public class DLAlarmReciever extends BroadcastReceiver {
 
 		Log.e("tag","recieved! "+intent.getBooleanExtra("startCountDown", false));
 		
-		if (intent.getBooleanExtra("startCountDown", false)) {
-			myIntent = new Intent(context, CountDown.class);
+		if (intent.getBooleanExtra("showQuiz", false)) { //if showQuiz was added as an extra...
+			myIntent = new Intent(context, Guess.class);
 			myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(myIntent);
 		} else {
 
 			Log.e("tag", "went off");
-			myIntent = new Intent(context, WAKEUP.class);
+			myIntent = new Intent(context, CountDown.class);
 			myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			context.startActivity(myIntent);
 		}

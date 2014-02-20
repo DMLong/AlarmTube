@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -14,11 +15,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Guess extends Activity {
+	
+	MediaPlayer mediaPlayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guess);
+		
 		ArrayList<Button> butts = new ArrayList<Button>();
 		butts.add((Button)findViewById(R.id.translate));
 		butts.add((Button)findViewById(R.id.button2));
@@ -30,6 +34,10 @@ public class Guess extends Activity {
 		bad1.setText(BigDaddy.wrong1);
 		Button bad2 = getButt(butts);
 		bad2.setText(BigDaddy.wrong2);
+		
+		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
+		mediaPlayer.start(); 
+		
 	}
 
 	private Button getButt(ArrayList<Button> butts) {

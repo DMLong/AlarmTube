@@ -1,10 +1,15 @@
 package com.example.alarmtube;
 
+import java.util.Random;
+
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -18,6 +23,10 @@ public class CountDown extends Activity {
 
 	Button start;
 	MyCount mc;
+	Random randGenerator;
+	long delay;
+	PendingIntent alarmIntent;
+	AlarmManager alarmManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +48,8 @@ public class CountDown extends Activity {
 		 // Vibrate for 1500 milliseconds
 		 v.vibrate(500);
 		
-		//MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		//mediaPlayer.start(); 
+		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
+		mediaPlayer.start(); 
 		
 		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
 		Editor editor = pref.edit();
@@ -129,6 +138,18 @@ public class CountDown extends Activity {
     private void startYoutube() {
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);
+    	
+    	randGenerator = new Random();
+		delay = randGenerator.nextLong();
+		delay = (5*delay)+2;
+		delay = delay * 60000; //convert to milliseconds
+		
+		Intent myIntent = new Intent(this, DLAlarmReciever.class);
+		myIntent.putExtra("showQuiz",true);
+		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_ONE_SHOT);
+		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
+    	
     	finish();
 	}
 

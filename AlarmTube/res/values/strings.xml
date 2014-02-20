@@ -9,5 +9,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_da_tube">DaTube</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_wakeup">WAKEUP</string>
 
 </resources>

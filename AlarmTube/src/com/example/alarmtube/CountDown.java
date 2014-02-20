@@ -67,7 +67,7 @@ public class CountDown extends Activity {
 		return true;
 	}
 	
-	   // countdowntimer is an abstract class, so extend it and fill in methods
+	// countdowntimer is an abstract class, so extend it and fill in methods
     public class MyCount extends CountDownTimer {
 
         public MyCount(long millisInFuture, long countDownInterval) {

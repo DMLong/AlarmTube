@@ -4,10 +4,12 @@ public class FriendData {
 	String vid;
 	String name;
 	String message;
-	public FriendData(String vid, String name, String message) {
+	protected String enMessage;
+	public FriendData(String vid, String name, String message, String enMessage) {
 		super();
 		this.vid = vid;
 		this.name = name;
 		this.message = message;
+		this.enMessage = enMessage;
 	}
 }

@@ -6,15 +6,20 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Message extends Activity {
 	TextView message;
 	TextView percent;
+	Button translate;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_message);
+		translate = (Button)findViewById(R.id.translate);
 		message= (TextView)findViewById(R.id.message);
 		percent= (TextView)findViewById(R.id.percent);
 		message.setText(BigDaddy.friendData.message);
@@ -24,6 +29,14 @@ public class Message extends Activity {
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
 	    percent.setText("percent right: "+ (float)right/(float)(right +wrong));
+	    translate.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View arg0) {
+				translate.setText(BigDaddy.friendData.enMessage);
+				
+			}
+	    });
+	    
 	}
 
 	@Override

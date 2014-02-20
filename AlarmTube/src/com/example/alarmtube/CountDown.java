@@ -46,8 +46,11 @@ public class CountDown extends Activity {
 	    FriendDataManager fdm = new FriendDataManager();
 	    BigDaddy.friendData = fdm.getFriend(at);
 	    BigDaddy.wrong1 = fdm.getWrong(at);
+	    while ( BigDaddy.friendData.name.equals(BigDaddy.wrong1)){
+	    	BigDaddy.wrong1= fdm.getWrong(at);
+	    }
 	    BigDaddy.wrong2= fdm.getWrong(at);
-	    while (BigDaddy.wrong1.equals(BigDaddy.wrong2)){
+	    while (BigDaddy.wrong1.equals(BigDaddy.wrong2) || BigDaddy.friendData.name.equals(BigDaddy.wrong2)){
 	    	 BigDaddy.wrong2= fdm.getWrong(at);
 	    }
 	}

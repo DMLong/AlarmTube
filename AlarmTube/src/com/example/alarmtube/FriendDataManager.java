@@ -28,7 +28,7 @@ public class FriendDataManager {
 			at = fd.length-1;
 		}
 		Log.i("at",""+at);
-		roll= (int) Math.floor(Math.random()*(fd.length + 2 - (at+1))) +at+1;
+		roll= (int) (Math.floor(Math.random()*(fd.length + 2 - (at+1))) +at+1);
 		Log.i("roll",""+roll);
 		if (roll == fd.length +1){
 			return "Biggie";
@@ -36,7 +36,7 @@ public class FriendDataManager {
 		if (roll == fd.length){
 			return "Tupac";
 		}
-		return fd[at].name;
+		return fd[roll].name;
 	}
 
 

@@ -1,5 +1,7 @@
 package com.example.alarmtube;
 
+import java.util.Random;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
@@ -17,6 +19,8 @@ public class WAKEUP extends Activity {
 	PendingIntent alarmIntent;
 	AlarmManager alarmManager;
 	MediaPlayer mediaPlayer;
+	Random randGenerator;
+	long delay;
 	
 	Button off;
 	
@@ -27,6 +31,11 @@ public class WAKEUP extends Activity {
 		
 		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); 
+		
+		randGenerator = new Random();
+		delay = randGenerator.nextLong();
+		delay = (5*delay)+2;
+		delay = delay * 60000; //convert to milliseconds
 		
 		
 		off = (Button) findViewById(R.id.off);
@@ -41,7 +50,7 @@ public class WAKEUP extends Activity {
 		myIntent.putExtra("startCountDown",true);
 		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_ONE_SHOT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+20000, alarmIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+delay, alarmIntent);
 		
 	}
 

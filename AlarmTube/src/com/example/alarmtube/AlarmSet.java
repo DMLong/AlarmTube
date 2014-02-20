@@ -7,11 +7,13 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
@@ -22,6 +24,7 @@ public class AlarmSet extends Activity {
     PendingIntent alarmIntent; 
     Intent i;
     long offset;
+    TextView percent;
 
     
     @Override
@@ -30,6 +33,19 @@ public class AlarmSet extends Activity {
         setContentView(R.layout.activity_alarm_set);
         
         timeSelector = (TimePicker) findViewById(R.id.timePicker);
+        
+		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
+		int right = pref.getInt("RIGHT", 0);
+		Log.i("good",right+"");
+	    int wrong = pref.getInt("WRONG", 0);
+	    Log.i("bad",wrong+"");
+	    percent = (TextView)findViewById(R.id.textView1);
+	    if (wrong != 0){
+	    	percent.setText(right+"/"+(wrong+right));
+	    }else{
+	    	percent.setText("?");
+	    }
+	    
     }
     
     @Override
@@ -39,6 +55,7 @@ public class AlarmSet extends Activity {
     }
     
     public void toggleOnOff(View view){
+    	Log.i("toggleOff","called");
     	Calendar calendar;
     	long curTime;
     	long alarmTime;
@@ -52,7 +69,7 @@ public class AlarmSet extends Activity {
             
             timeSelector.setEnabled(false);
             Intent i = new Intent(this, DLAlarmReciever.class);
-            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_ONE_SHOT);
+            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
             
             calendar = Calendar.getInstance();
             //calendar.setTimeInMillis(System.currentTimeMillis());

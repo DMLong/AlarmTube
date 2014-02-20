@@ -12,17 +12,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
-    <ToggleButton
-        android:id="@+id/toggleAlarm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/timePicker"
-        android:layout_marginTop="16dp"
-        android:layout_toLeftOf="@+id/textView2"
-        android:onClick="toggleOnOff"
-        android:text="ToggleButton" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -42,5 +31,15 @@
         android:layout_marginLeft="28dp"
         android:layout_toRightOf="@+id/textView1"
         android:text="TextView" />
+
+    <ToggleButton
+        android:id="@+id/toggleAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timePicker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:onClick="toggleOnOff"
+        android:text="ToggleButton" />
 
 </RelativeLayout>

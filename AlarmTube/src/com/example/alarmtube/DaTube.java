@@ -74,7 +74,7 @@ OnInitializedListener{
 
 				@Override
 				public void onStopped() {
-					goToGuess();
+					//goToGuess();
 				}
 	        });
 	      }

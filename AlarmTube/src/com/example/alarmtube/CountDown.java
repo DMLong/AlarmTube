@@ -27,6 +27,23 @@ public class CountDown extends Activity {
 	long delay;
 	PendingIntent alarmIntent;
 	AlarmManager alarmManager;
+	MediaPlayer mediaPlayer;
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		if (mediaPlayer.isPlaying()){
+		mediaPlayer.pause();
+		}
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		if (mediaPlayer.isPlaying()){
+		mediaPlayer.start();
+		}
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +65,7 @@ public class CountDown extends Activity {
 		 // Vibrate for 1500 milliseconds
 		 v.vibrate(500);
 		
-		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
+		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); 
 		
 		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);

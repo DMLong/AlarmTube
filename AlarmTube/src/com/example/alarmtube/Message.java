@@ -32,7 +32,7 @@ public class Message extends Activity {
 	    translate.setOnClickListener(new OnClickListener(){
 			@Override
 			public void onClick(View arg0) {
-				translate.setText(BigDaddy.friendData.enMessage);
+				message.setText(BigDaddy.friendData.enMessage);
 			}
 	    });
 	    

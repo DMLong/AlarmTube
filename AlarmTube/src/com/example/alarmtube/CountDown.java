@@ -29,6 +29,7 @@ public class CountDown extends Activity {
 	AlarmManager alarmManager;
 	MediaPlayer mediaPlayer;
 	public long timeLeft= 10000;
+	Vibrator v;
 	
 	@Override
 	public void onPause(){
@@ -42,9 +43,7 @@ public class CountDown extends Activity {
 	@Override
 	public void onResume(){
 		super.onResume();
-		if (mediaPlayer.isPlaying()){
 		mediaPlayer.start();
-		}
 		mc = new MyCount(timeLeft,100);
 		mc.start();
 	}
@@ -62,15 +61,11 @@ public class CountDown extends Activity {
 			}
 		});
 		
-		mc = new MyCount(timeLeft, 100);
-		mc.start();
-		
-		Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 		 // Vibrate for 1500 milliseconds
 		 v.vibrate(500);
 		
 		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		mediaPlayer.start(); 
 		
 		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
 		Editor editor = pref.edit();

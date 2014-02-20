@@ -22,6 +22,8 @@ public class AlarmSet extends Activity {
     PendingIntent alarmIntent; 
     Intent i;
     long offset;
+    private static Bundle bundle = new Bundle();
+    private ToggleButton toggleButton;
 
     
     @Override
@@ -30,6 +32,7 @@ public class AlarmSet extends Activity {
         setContentView(R.layout.activity_alarm_set);
         
         timeSelector = (TimePicker) findViewById(R.id.timePicker);
+        toggleButton = (ToggleButton)findViewById(R.id.toggleAlarm);
     }
     
     @Override
@@ -38,8 +41,19 @@ public class AlarmSet extends Activity {
         return true;
     }
     
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	bundle.putBoolean("ToggleButtonState", toggleButton.isChecked());  	
+    }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+        toggleButton.setChecked(bundle.getBoolean("ToggleButtonState",false));
+    }
+    
     public void toggleOnOff(View view){
-    	Calendar calendar;
     	long curTime;
     	long alarmTime;
     	
@@ -52,14 +66,7 @@ public class AlarmSet extends Activity {
             
             timeSelector.setEnabled(false);
             Intent i = new Intent(this, DLAlarmReciever.class);
-            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_ONE_SHOT);
-            
-            calendar = Calendar.getInstance();
-            //calendar.setTimeInMillis(System.currentTimeMillis());
-            //calendar.set(Calendar.HOUR_OF_DAY, timeSelector.getCurrentHour());
-            //calendar.set(Calendar.MINUTE, timeSelector.getCurrentMinute());
-            //Log.e("calendar",""+calendar.);
-            //Log.e("calendar",""+Calendar.MINUTE);
+            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
             
             Log.e("hr",""+timeSelector.getCurrentHour());
             Log.e("min",""+timeSelector.getCurrentMinute());

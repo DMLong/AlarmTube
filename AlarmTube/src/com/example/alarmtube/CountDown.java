@@ -136,8 +136,6 @@ public class CountDown extends Activity {
     }
     
     private void startYoutube() {
-    	Intent intent = new Intent(this, DaTube.class);
-    	startActivity(intent);
     	
     	randGenerator = new Random();
 		delay = randGenerator.nextLong();
@@ -149,6 +147,9 @@ public class CountDown extends Activity {
 		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_ONE_SHOT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
+    	
+    	Intent intent = new Intent(this, DaTube.class);
+    	startActivity(intent);
     	
     	finish();
 	}

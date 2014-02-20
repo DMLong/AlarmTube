@@ -7,11 +7,13 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
@@ -24,6 +26,7 @@ public class AlarmSet extends Activity {
     long offset;
     private static Bundle bundle = new Bundle();
     private ToggleButton toggleButton;
+    TextView percent;
 
     
     @Override
@@ -33,6 +36,14 @@ public class AlarmSet extends Activity {
         
         timeSelector = (TimePicker) findViewById(R.id.timePicker);
         toggleButton = (ToggleButton)findViewById(R.id.toggleAlarm);
+        
+		SharedPreferences pref = getSharedPreferences("ONE",Context.MODE_PRIVATE);
+		int right = pref.getInt("RIGHT", 0);
+		Log.i("good",right+"");
+	    int wrong = pref.getInt("WRONG", 0);
+	    Log.i("bad",wrong+"");
+	    percent = (TextView)findViewById(R.id.textView1);
+	    percent.setText(right+"/"+(wrong+right));  
     }
     
     @Override

@@ -33,7 +33,6 @@ public class Message extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				translate.setText(BigDaddy.friendData.enMessage);
-				
 			}
 	    });
 	    

@@ -61,9 +61,9 @@ public class CountDown extends Activity {
 			}
 		});
 		
-		v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		v = (Vibrator) this.getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 		 // Vibrate for 1500 milliseconds
-		 v.vibrate(500);
+		v.vibrate(500);
 		
 		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		

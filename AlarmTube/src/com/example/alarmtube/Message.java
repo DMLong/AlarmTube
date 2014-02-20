@@ -29,12 +29,12 @@ public class Message extends Activity {
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
 	    percent.setText("percent right: "+ (float)right/(float)(right +wrong));
-	    translate.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View arg0) {
-				message.setText(BigDaddy.friendData.enMessage);
-			}
-	    });
+//	    translate.setOnClickListener(new OnClickListener(){
+//			@Override
+//			public void onClick(View arg0) {
+//				message.setText(BigDaddy.friendData.enMessage);
+//			}
+//	    });
 	    
 	}
 

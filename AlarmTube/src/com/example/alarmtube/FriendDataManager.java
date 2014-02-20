@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class FriendDataManager {
 	FriendData[] fd={
-			new FriendData("WkaoqpfMG6Q","Colin Wielga","九","webz!")
+			new FriendData("WkaoqpfMG6Q","Colin Wielga","webz!")
 	};
 
 	public FriendData getFriend(int at) {

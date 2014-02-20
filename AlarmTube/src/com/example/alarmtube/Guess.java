@@ -79,5 +79,11 @@ public class Guess extends Activity {
     	startActivity(intent);
     	finish();
 	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		mediaPlayer.stop();
+	}
 
 }

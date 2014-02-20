@@ -161,7 +161,7 @@ public class CountDown extends Activity {
 		
 		Intent myIntent = new Intent(this, DLAlarmReciever.class);
 		myIntent.putExtra("showQuiz",true);
-		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_ONE_SHOT);
+		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
     	

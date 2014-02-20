@@ -25,7 +25,7 @@ public class AlarmSet extends Activity {
     Intent i;
     long offset;
     private static Bundle bundle = new Bundle();
-    private ToggleButton toggleButton;
+    ToggleButton toggleButton;
     TextView percent;
 
     
@@ -43,7 +43,7 @@ public class AlarmSet extends Activity {
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
 	    percent = (TextView)findViewById(R.id.textView1);
-	    percent.setText(right+"/"+(wrong+right));  
+	    //percent.setText(right+"/"+(wrong+right));  
     }
     
     @Override

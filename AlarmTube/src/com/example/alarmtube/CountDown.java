@@ -28,6 +28,7 @@ public class CountDown extends Activity {
 	PendingIntent alarmIntent;
 	AlarmManager alarmManager;
 	MediaPlayer mediaPlayer;
+	public long timeLeft= 10000;
 	
 	@Override
 	public void onPause(){
@@ -35,6 +36,7 @@ public class CountDown extends Activity {
 		if (mediaPlayer.isPlaying()){
 		mediaPlayer.pause();
 		}
+		mc.cancel();
 	}
 	
 	@Override
@@ -43,6 +45,8 @@ public class CountDown extends Activity {
 		if (mediaPlayer.isPlaying()){
 		mediaPlayer.start();
 		}
+		mc = new MyCount(timeLeft,100);
+		mc.start();
 	}
 	
 	@Override
@@ -58,7 +62,7 @@ public class CountDown extends Activity {
 			}
 		});
 		
-		mc = new MyCount(10000, 100);
+		mc = new MyCount(timeLeft, 100);
 		mc.start();
 		
 		Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
@@ -97,7 +101,7 @@ public class CountDown extends Activity {
     public class MyCount extends CountDownTimer {
 
         public MyCount(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
+        	super(millisInFuture, countDownInterval);
         }
 
         @Override
@@ -108,18 +112,7 @@ public class CountDown extends Activity {
 
 		@Override
         public void onTick(long millisUntilFinished) {
-			start.setText("零");
-			start.setText("一");
-			start.setText("二");
-			start.setText("三");
-			start.setText("四");
-			start.setText("五");
-			start.setText("六");
-			start.setText("七");
-			start.setText("八");
-			start.setText("九");
-			start.setText("十");
-			
+			timeLeft = millisUntilFinished;
 			start.setText("Video in: " + toChi((int)(millisUntilFinished / 1000)));
         }
 

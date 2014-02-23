@@ -23,6 +23,7 @@ public class FriendDataManager {
 			new FriendData("0P9QMkm9Eew","David Long","rise and shine! xoxo -dlong"),
 			new FriendData("sD35BHWH8sg#","Andy Cochrane","'SNIPE! -Cochrane"),
 			new FriendData("CM5mFH3_Qhs","Iris Cutler","We can't all be curling champions…-Iris"),
+			new FriendData("gNJPEjGrJbE","Jeffrey Snyder","So this was just a placeholder video for Jeff because he can't follow directions and made his own. Email colin or david asap and we'll send it to you.  It's great."),
 			new FriendData("9d8wWcJLnFI","Groenemann","I don't have a message because I'm a n00b who can't follow directions-Groenemann"),
 			new FriendData("HEr1ihXM61E","Nora Sullivan","Wake up Rhys, you're in China!-Nora"),
 			new FriendData("NFTaiWInZ44","Will Stratford","Rhys, I miss living with you on that side of the planet, but I hope you're keeping up the superior diet of paklep, Nutella and Toblerones.-Will"),

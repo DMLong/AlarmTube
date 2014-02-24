@@ -28,7 +28,7 @@ public class Message extends Activity {
 		Log.i("good",right+"");
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
-	    percent.setText("percent right: "+ (float)right/(float)(right +wrong));
+	    percent.setText("正確百分比： "+ (float)right/(float)(right +wrong));
 //	    translate.setOnClickListener(new OnClickListener(){
 //			@Override
 //			public void onClick(View arg0) {
@@ -44,5 +44,11 @@ public class Message extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+    @Override
+    public void onStop() {
+    	super.onStop();
+    	WakeLocker.release();
+    }
 
 }

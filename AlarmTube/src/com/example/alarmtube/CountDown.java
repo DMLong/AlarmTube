@@ -91,6 +91,12 @@ public class CountDown extends Activity {
 		return true;
 	}
 	
+	@Override
+	public void onStop(){
+		super.onStop();
+		WakeLocker.release();
+	}
+	
 	// countdowntimer is an abstract class, so extend it and fill in methods
     public class MyCount extends CountDownTimer {
 
@@ -107,7 +113,7 @@ public class CountDown extends Activity {
 		@Override
         public void onTick(long millisUntilFinished) {
 			timeLeft = millisUntilFinished;
-			start.setText("Video in: " + toChi((int)(millisUntilFinished / 1000)));
+			start.setText("视频开始在： " + toChi((int)(millisUntilFinished / 1000)));
         }
 
 		private String toChi(int num) {
@@ -143,14 +149,14 @@ public class CountDown extends Activity {
     	
     	randGenerator = new Random();
 		delay = randGenerator.nextLong();
-		delay = (5*delay)+2;
+		delay = (10*delay)+5;
 		delay = delay * 60000; //convert to milliseconds
 		
 		Intent myIntent = new Intent(this, DLAlarmReciever.class);
 		myIntent.putExtra("showQuiz",true);
 		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+delay, alarmIntent);
     	
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);

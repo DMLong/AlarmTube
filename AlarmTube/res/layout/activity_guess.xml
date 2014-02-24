@@ -12,7 +12,7 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Who sent this video?"
+        android:text="誰送這個視頻嗎？"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button

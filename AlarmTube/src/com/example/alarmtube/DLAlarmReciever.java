@@ -14,6 +14,7 @@ public class DLAlarmReciever extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
+		WakeLocker.acquire(context);
 
 		Log.e("tag","recieved! "+intent.getBooleanExtra("startCountDown", false));
 		

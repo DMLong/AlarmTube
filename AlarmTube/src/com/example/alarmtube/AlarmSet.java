@@ -28,7 +28,6 @@ public class AlarmSet extends Activity {
     ToggleButton toggleButton;
     TextView percent;
 
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,7 @@ public class AlarmSet extends Activity {
 	    int wrong = pref.getInt("WRONG", 0);
 	    Log.i("bad",wrong+"");
 	    percent = (TextView)findViewById(R.id.textView1);
-	    //percent.setText(right+"/"+(wrong+right));  
+	    percent.setText(right+"/"+(right+wrong));
     }
     
     @Override
@@ -61,7 +60,10 @@ public class AlarmSet extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        toggleButton.setChecked(bundle.getBoolean("ToggleButtonState",false));
+        boolean alarmUp = (PendingIntent.getBroadcast(getBaseContext(), 0, 
+                new Intent("com.example.alarmtube.DLAlarmReciever"), 
+                PendingIntent.FLAG_NO_CREATE) != null); 
+        toggleButton.setChecked(alarmUp);
     }
     
     public void toggleOnOff(View view){
@@ -95,8 +97,6 @@ public class AlarmSet extends Activity {
             } else{
             	offset = (alarmTime+(24*3600*1000)-curTime);
             }
-            
-
             Log.e("offset","offset "+offset);
             //get the object
             Log.e("AAA","SANITY CHECK");
@@ -105,13 +105,12 @@ public class AlarmSet extends Activity {
         } else {
             Log.e("test","OFFF");
             
-            Intent i = new Intent(this, DLAlarmReciever.class);
+            Intent i = new Intent(getBaseContext(), DLAlarmReciever.class);
             
             //i.putExtra("startCountdown", false);
-            alarmIntent = PendingIntent.getBroadcast(this, 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
+            alarmIntent = PendingIntent.getBroadcast(getBaseContext(), 1, i, PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.cancel(alarmIntent);
-            
             
             timeSelector.setEnabled(true);
             //TODO cancel old pending request.t

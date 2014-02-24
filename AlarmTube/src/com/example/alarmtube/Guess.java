@@ -1,22 +1,29 @@
 package com.example.alarmtube;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Vibrator;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Guess extends Activity {
-	
 	MediaPlayer mediaPlayer;
+	MyCount count;
+	Vibrator v;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,11 @@ public class Guess extends Activity {
 		
 		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
 		mediaPlayer.start(); 
+		count = new MyCount(10000,10000);
+		count.start();
+		
+		v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+		v.vibrate(500);
 		
 	}
 
@@ -85,5 +97,22 @@ public class Guess extends Activity {
 		super.onPause();
 		mediaPlayer.stop();
 	}
+	
+	 public class MyCount extends CountDownTimer {
 
+	        public MyCount(long millisInFuture, long countDownInterval) {
+	        	super(millisInFuture, countDownInterval);
+	        }
+
+	        @Override
+	        public void onFinish() {
+	        	finish();
+	        }
+
+			@Override
+			public void onTick(long arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+	 }
 }

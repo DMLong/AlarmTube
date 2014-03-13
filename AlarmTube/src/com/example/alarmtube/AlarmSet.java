@@ -86,15 +86,17 @@ public class AlarmSet extends Activity {
             
             curTime=System.currentTimeMillis();
             //curTime= new GregorianCalendar().getTimeInMillis();
-            curTime = (curTime-(3600*6*1000))%(3600*24*1000); //TODO change that - to a + and 6 to an 8 for china timezones
+            curTime = (curTime+(3600*8*1000))%(3600*24*1000); //TODO change that - to a + and 6 to an 8 for china timezones
             alarmTime = (60*1000*timeSelector.getCurrentMinute())+(3600*1000*timeSelector.getCurrentHour());
             
             Log.e("curTime","curTime "+curTime);
             Log.e("alarmTime","alarmTime "+alarmTime);
             
             if (alarmTime > curTime){
+            	Log.e("ADDING","Alarm set today");
             	offset = alarmTime-curTime;
             } else{
+            	Log.e("ADDING","TOMORROW!");
             	offset = (alarmTime+(24*3600*1000)-curTime);
             }
             Log.e("offset","offset "+offset);

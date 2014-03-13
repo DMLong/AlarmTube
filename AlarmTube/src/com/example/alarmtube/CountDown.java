@@ -24,7 +24,7 @@ public class CountDown extends Activity {
 	Button start;
 	MyCount mc;
 	Random randGenerator;
-	long delay;
+	float delay;
 	PendingIntent alarmIntent;
 	AlarmManager alarmManager;
 	MediaPlayer mediaPlayer;
@@ -148,15 +148,18 @@ public class CountDown extends Activity {
     private void startYoutube() {
     	
     	randGenerator = new Random();
-		delay = randGenerator.nextLong();
-		delay = (10*delay)+5;
+		delay = (float) randGenerator.nextInt(1000000);
+		delay = (float) (delay/1000000.0);
+		Log.e("delay","DELAY: "+delay);
+		//delay = (10*delay)+5;
 		delay = delay * 60000; //convert to milliseconds
+		Log.e("delay","DELAY2  "+delay);
 		
 		Intent myIntent = new Intent(this, DLAlarmReciever.class);
 		myIntent.putExtra("showQuiz",true);
 		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, (long) (System.currentTimeMillis()+delay), alarmIntent);
     	
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);

@@ -30,6 +30,8 @@ public class Guess extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_guess);
 		
+		Log.e("QUIZZING","QUIZZING");
+		
 		ArrayList<Button> butts = new ArrayList<Button>();
 		butts.add((Button)findViewById(R.id.translate));
 		butts.add((Button)findViewById(R.id.button2));
@@ -42,10 +44,11 @@ public class Guess extends Activity {
 		Button bad2 = getButt(butts);
 		bad2.setText(BigDaddy.wrong2);
 		
-		//mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		//mediaPlayer.start(); 
 		count = new MyCount(10000,10000);
 		count.start();
+		
+		mediaPlayer = MediaPlayer.create(this, R.raw.beep);
+		mediaPlayer.start();
 		
 		v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 		v.vibrate(1000);

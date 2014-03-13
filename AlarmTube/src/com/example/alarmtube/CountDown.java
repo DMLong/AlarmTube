@@ -156,7 +156,7 @@ public class CountDown extends Activity {
 		myIntent.putExtra("showQuiz",true);
 		alarmIntent = PendingIntent.getBroadcast(this, 1, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+delay, alarmIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+100000, alarmIntent);
     	
     	Intent intent = new Intent(this, DaTube.class);
     	startActivity(intent);

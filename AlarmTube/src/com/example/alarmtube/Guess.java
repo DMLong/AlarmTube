@@ -42,13 +42,13 @@ public class Guess extends Activity {
 		Button bad2 = getButt(butts);
 		bad2.setText(BigDaddy.wrong2);
 		
-		mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
-		mediaPlayer.start(); 
+		//mediaPlayer = MediaPlayer.create(this, R.raw.three_of_us);
+		//mediaPlayer.start(); 
 		count = new MyCount(10000,10000);
 		count.start();
 		
 		v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
-		v.vibrate(500);
+		v.vibrate(1000);
 		
 	}
 
@@ -95,7 +95,7 @@ public class Guess extends Activity {
 	@Override
 	public void onPause(){
 		super.onPause();
-		mediaPlayer.stop();
+		//mediaPlayer.stop();
 	}
 	
 	 public class MyCount extends CountDownTimer {
